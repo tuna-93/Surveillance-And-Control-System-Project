@@ -20,8 +20,7 @@ namespace Test1
         private void Form1_Load(object sender, EventArgs e)
         {
             //test str 
-            MessageBox.Show("2015. 12. 28 GitHub 생성. 병합 수정");
-            //저거 맞나 확인해봐바
+            MessageBox.Show("2015. 12. 28 GitHub 생성.");
         }
     }
 }
