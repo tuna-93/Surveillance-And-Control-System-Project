@@ -21,7 +21,7 @@ namespace Test1
         {
             //test str 
             MessageBox.Show("노수찬");
-            //저거 맞나 확인해봐바
+            //저거 맞나 확인해봐바 확인해볼
         }
     }
 }
