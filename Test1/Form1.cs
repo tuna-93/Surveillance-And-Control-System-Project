@@ -19,7 +19,7 @@ namespace Test1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            //test str
         }
     }
 }
