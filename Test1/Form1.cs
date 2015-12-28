@@ -20,7 +20,7 @@ namespace Test1
         private void Form1_Load(object sender, EventArgs e)
         {
             //test str 
-            MessageBox.Show("2015. 12. 28 GitHub 생성.");
+            MessageBox.Show("2015. 12. 28 GitHub 생성. 강아지 멍멍");
         }
 
         private void button1_Click(object sender, EventArgs e)
