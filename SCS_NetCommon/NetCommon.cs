@@ -13,7 +13,7 @@ namespace SCS_NetCommon
     /// 네트워크를 통해 전송될 객체입니다.
     /// </summary>
     [Serializable]
-    class SendingObj : ISerializable
+    public class SendingObj : ISerializable
     {
         /// <summary>
         /// 예외 메시지를 가져옵니다. 없을 경우 null입니다.
@@ -83,7 +83,7 @@ namespace SCS_NetCommon
     /// <summary>
     /// 전송 유형을 나타납니다.
     /// </summary>
-    enum SendingType
+    public enum SendingType
     {
         // --- 서버에서 클라이언트로 전송됩니다. ---
 
