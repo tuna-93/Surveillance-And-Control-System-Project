@@ -22,9 +22,12 @@ namespace CSTest
         {
             get
             {
-                if (m_Listener == null)
-                    return -1;
-                return m_PortNumber;
+                lock (this)
+                {
+                    if (m_Listener == null)
+                        return -1;
+                    return m_PortNumber;
+                }
             }
         }
 
@@ -39,14 +42,22 @@ namespace CSTest
         private Thread m_ConnectionAcceptThread;
 
         /// <summary>
+        /// 받아들인 연결을 저장하는 필드입니다.
+        /// </summary>
+        private Dictionary<IPAddress, TcpClient> m_AcceptedConnection = new Dictionary<IPAddress, TcpClient>();
+
+        /// <summary>
         /// 지정한 포트번호로 서버를 열어, 연결 수신을 시작합니다.
         /// </summary>
         /// <param name="portNumber">열 포트번호입니다.</param>
         public void OpenPort(ushort portNumber)
         {
-            m_PortNumber = portNumber;
-            m_Listener = new TcpListener(IPAddress.Any, portNumber);
-            m_Listener.Start();
+            lock (this)
+            {
+                m_PortNumber = portNumber;
+                m_Listener = new TcpListener(IPAddress.Any, portNumber);
+                m_Listener.Start();
+            }
         }
 
         /// <summary>
@@ -54,8 +65,11 @@ namespace CSTest
         /// </summary>
         public void ClosePort()
         {
-            m_Listener.Stop();
-            m_Listener = null;
+            lock (this)
+            {
+                m_Listener.Stop();
+                m_Listener = null;
+            }
         }
 
         /// <summary>

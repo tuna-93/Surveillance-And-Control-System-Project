@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
 using System.IO;
-using System.Text;
+using System.Net;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Threading.Tasks;
 
 namespace SCS_NetCommon
 {
@@ -81,22 +78,41 @@ namespace SCS_NetCommon
     }
 
     /// <summary>
+    /// 메시지 전달 요청 데이터를 나타냅니다.
+    /// </summary>
+    [Serializable]
+    public class SpreadMessageTag
+    {
+        /// <summary>
+        /// 메시지를 전달할 IP 주소입니다.
+        /// </summary>
+        public IPAddress[] spreadingIP { get; private set; }
+
+        /// <summary>
+        /// 전달할 메시지입니다.
+        /// </summary>
+        public string spreadText { get; private set; }
+
+        /// <summary>
+        /// 메세지 전달 요청을 위한 객체를 생성합니다.
+        /// </summary>
+        /// <param name="spreadingIP">메시지를 전달할 IP 주소입니다.</param>
+        /// <param name="spreadText">전달할 메시지입니다.</param>
+        public SpreadMessageTag(IPAddress[] spreadingIP, string spreadText)
+        {
+            this.spreadingIP = spreadingIP;
+            this.spreadText = spreadText;
+        }
+    }
+
+    /// <summary>
     /// 전송 유형을 나타납니다.
     /// </summary>
     public enum SendingType
     {
-        // --- 서버에서 클라이언트로 전송됩니다. ---
-
         /// <summary>
-        /// 서버에서 클라이언트로 전송되는 화면에 표시될 메시지 입니다.
+        /// 메시지 전달 요청입니다.
         /// </summary>
-        SToC_SpreadMessage,
-
-        // --- 클라이언트에서 서버로 전송됩니다. ---
-
-        /// <summary>
-        /// 클라이언트에서 서버로 전송되는 메시지 전달 요청입니다.
-        /// </summary>
-        CToS_SpreadMessageReq
+        SpreadMessage
     }
 }
