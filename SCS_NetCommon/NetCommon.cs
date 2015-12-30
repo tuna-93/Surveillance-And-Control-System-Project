@@ -7,7 +7,7 @@ using System.Text;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading.Tasks;
 
-namespace NetCommon
+namespace SCS_NetCommon
 {
     /// <summary>
     /// 네트워크를 통해 전송될 객체입니다.
